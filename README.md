@@ -10,24 +10,8 @@ Students choose which poster should advertise a campus makers’ fair. Each Ethe
 
 The voting page already contains the address above. To use this deployment, start with section 2. Screenshot 1 is included.
 
-## 1. Reproduce the deployment in Remix
 
-1. Open MetaMask in your desktop browser, enable test networks if needed, and select **Sepolia**. Use an account with enough Sepolia test ETH for two transactions (deployment and one vote). The app sends zero ETH as transaction value.
-2. Open [Remix IDE](https://remix.ethereum.org/). In the file explorer, create `SmartContract.sol`, paste the supplied Solidity source and save.
-3. In **Solidity Compiler**, select **0.8.24** and compile the file. Select the **PressVote** contract.
-4. In **Deploy & Run Transactions**, set the environment to **Browser Extension** (older versions call this **Injected Provider – MetaMask**). Connect MetaMask. Check that Remix shows Sepolia and your intended account. Leave transaction value at zero. There are no constructor arguments.
-5. Click **Deploy**, confirm in MetaMask, and wait until PressVote appears under deployed contracts. Copy its contract address using the copy icon. A contract address begins with 0x and has 40 hexadecimal digits after it. The transaction hash is a different value.
-6. Add the contract address above and between the quotes in `const DEFAULT_ADDRESS = "";` in index.html. The input can also accept a pasted address for testing. Capture screenshot 1.
-
-## 2. Run the page and cast one vote
-
-1. Extract the entire ZIP. In the folder containing index.html, open a terminal. On Windows with Python installed, run `py -m http.server 8000 --bind 127.0.0.1`. On macOS or Linux use `python3 -m http.server 8000 --bind 127.0.0.1`. Alternatively, open the folder in VS Code and use Live Server.
-2. For the Python command, open <http://127.0.0.1:8000> in the browser with MetaMask. Keep internet access enabled for ethers.js and the Sepolia connection.
-3. Check the contract address, click **Connect MetaMask** and approve account access. The page displays the wallet, network and on-chain totals. Capture screenshot 2 **before** voting.
-4. Select **Night Market** or **Fresh Type** and click **Cast vote**. Confirm the transaction in MetaMask. Wait for the page to show the confirmation block, transaction hash and updated counts. Capture screenshot 3.
-5. Click the hash to inspect the transaction. The explorer should show success and the ballot contract as the recipient. Reload, reconnect the same account, and check that the vote persists and the vote button stays disabled. **Refresh totals** reads the contract again without opening a signing prompt.
-
-## 3. How the contract and page work
+## How the contract and page work
 
 | Solidity function | Kind | What it does |
 | --- | --- | --- |
@@ -39,7 +23,7 @@ The HTML includes the function signatures (the ABI) so ethers.js can encode each
 
 **Bonus UI feature:** Each result bar displays the option’s share of confirmed votes. For example, two Night Market votes and one Fresh Type vote display as 66.6% and 33.3% (truncated to one decimal). With zero votes both bars start empty.
 
-## 4. Capture evidence and submit
+## Capture evidence and submit
 
 Included screenshots:
 
